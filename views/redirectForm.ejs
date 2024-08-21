@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Redirecting...</title>
+</head>
+<body onload="document.myform.submit();">
+    <form action="<%=url%>" method="POST" name="myform">
+        <input type="hidden" name="param" value="paymentInit" />
+        <input type="hidden" name="trandata" value="<%=tranData%>" />
+        <input type="hidden" name="tranportalId" value="<%=tranPortalId%>" />
+        <input type="hidden" name="errorURL" value="<%=errorURL%>" />
+        <input type="hidden" name="responseURL" value="<%=responseURL%>" />
+    </form>
+</body>
+</html>

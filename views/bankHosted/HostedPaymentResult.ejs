@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="/css/payments-inter.css" rel="stylesheet" type="text/css">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        h2 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #343a40;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: #fff;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+        th {
+            background-color: #f1f1f1;
+            font-weight: bold;
+        }
+        td {
+            color: #495057;
+        }
+        .success-info {
+            background-color: #d4edda;
+            border: 2px solid #28a745;
+        }
+        .failure-info {
+            background-color: #f8d7da;
+            border: 2px solid #dc3545;
+        }
+        .no-re-warn {
+            margin-top: 20px;
+        }
+        .btn {
+            display: inline-block;
+            font-weight: 400;
+            color: #fff;
+            text-align: center;
+            vertical-align: middle;
+            user-select: none;
+            background-color: #dc3545;
+            border: 1px solid #dc3545;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap" id="detect-iframe">
+        <form name="formACS" id="formACS" action="http://localhost:3000/" method="GET" target="_parent">
+            <table class="<%= result === 0 && myObj.result !== 'CAPTURED' ? 'failure-info' : 'success-info' %>">
+                <tr>
+                    <td colspan="2" style="text-align: center;">
+                        <h2><b>Transaction Details</b></h2>
+                    </td>
+                </tr>
+                <% if (result === 0) { %>
+                    <% if (myObj.error) { %>
+                        <tr>
+                            <th>Error</th>
+                            <td><b><%= myObj.error %></b></td>
+                        </tr>
+                        <tr>
+                            <th>Error Text</th>
+                            <td><b><%= myObj.error_text %></b></td>
+                        </tr>
+                    <% } else { %>
+                        <tr>
+                            <th>Transaction Status</th>
+                            <td><b><%= myObj.result %></b></td>
+                        </tr>
+                        <% if (myObj.date) { %>
+                            <tr>
+                                <th>Post Date</th>
+                                <td><%= myObj.date %></td>
+                            </tr>
+                        <% } %>
+                        <% if (myObj.ref) { %>
+                            <tr>
+                                <th>Transaction Reference ID</th>
+                                <td><%= myObj.ref %></td>
+                            </tr>
+                        <% } %>
+                        <% if (myObj.trackId) { %>
+                            <tr>
+                                <th>Mrch Track ID</th>
+                                <td><%= myObj.trackId %></td>
+                            </tr>
+                        <% } %>
+                        <% if (myObj.transId) { %>
+                            <tr>
+                                <th>Transaction ID</th>
+                                <td><%= myObj.transId %></td>
+                            </tr>
+                        <% } %>
+                        <% if (myObj.amt) { %>
+                            <tr>
+                                <th>Transaction Amount</th>
+                                <td><%= myObj.amt %></td>
+                            </tr>
+                        <% } %>
+                        <% if (myObj.udf1) { %>
+                            <tr>
+                                <th>UDF1</th>
+                                <td><%= myObj.udf1 %></td>
+                            </tr>
+                        <% } %>
+                        <% if (myObj.udf2) { %>
+                            <tr>
+                                <th>UDF2</th>
+                                <td><%= myObj.udf2 %></td>
+                            </tr>
+                        <% } %>
+                        <% if (myObj.udf3) { %>
+                            <tr>
+                                <th>UDF3</th>
+                                <td><%= myObj.udf3 %></td>
+                            </tr>
+                        <% } %>
+                        <% if (myObj.udf4) { %>
+                            <tr>
+                                <th>UDF4</th>
+                                <td><%= myObj.udf4 %></td>
+                            </tr>
+                        <% } %>
+                        <% if (myObj.udf5) { %>
+                            <tr>
+                                <th>UDF5</th>
+                                <td><%= myObj.udf5 %></td>
+                            </tr>
+                        <% } %>
+                        <% if (myObj.paymentId) { %>
+                            <tr>
+                                <th>Payment ID</th>
+                                <td><%= myObj.paymentId %></td>
+                            </tr>
+                        <% } %>
+                        <% if (myObj.tokenCustomerId) { %>
+                            <tr>
+                                <th>Customer ID</th>
+                                <td><%= myObj.tokenCustomerId %></td>
+                            </tr>
+                        <% } %>
+                        <% if (myObj.tranDate) { %>
+                            <tr>
+                                <th>Tran Data</th>
+                                <td><%= myObj.tranDate %></td>
+                            </tr>
+                        <% } %>
+                        <% if (myObj.tranRequestDate) { %>
+                            <tr>
+                                <th>Tran Request Data</th>
+                                <td><%= myObj.tranRequestDate %></td>
+                            </tr>
+                        <% } %>
+                        <% if (myObj.tranResponseDate) { %>
+                            <tr>
+                                <th>Tran Response Data</th>
+                                <td><%= myObj.tranResponseDate %></td>
+                            </tr>
+                        <% } %>
+                    <% } %>
+                <% } %>
+            </table>
+        </form>
+        <p class="no-re-warn return-flkp succ">
+            <a class="btn" onclick="document.getElementById('formACS').submit();" target="_parent">Click here</a> to go to the Home page
+        </p>
+    </div>
+    <script>
+        if (!(self === window.top)) {
+            var el = document.getElementById('detect-iframe');
+            if (el) {
+                el.className += ' iframe';
+            }
+        }
+    </script>
+</body>
+</html>

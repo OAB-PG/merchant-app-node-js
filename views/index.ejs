@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Oman Arab Bank Merchant Sample Application</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <script src="/css/jquery.min.js"></script>
+  <script src="/css/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Transaction Types</h2>
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#bankHosted">Bank Hosted Transaction</a></li>
+    <li><a href="#serviceInquiry">Service Transaction</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="bankHosted" class="tab-pane fade in active">
+      <h3></h3>
+      <br />
+      <%- include('bankHosted/HostedPaymentdetailsHttp') %>
+    </div>
+    <div id="serviceInquiry" class="tab-pane fade">
+      <h3></h3>
+      <br />
+      <%- include('serviceTransaction/ServiceTransactionInfo') %>
+    </div>
+  </div>
+</div>
+
+<script>
+$(document).ready(function(){
+    $(".nav-tabs a").click(function(){
+        $(this).tab('show');
+    });
+});
+</script>
+
+</body>
+</html>

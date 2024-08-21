@@ -1,0 +1,94 @@
+<!-- views/serviceTransactionForm.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Service Transaction</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script>
+        function fnClickServiceTransaction() {
+            document.getElementById('serTransactionInfoInForm').submit();
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <form action="/serviceTransactionSubmit" id="serTransactionInfoInForm" method="post">
+                    <div class="form-group row">
+                        <label for="ActionLbl" class="col-sm-3 col-form-label">Action</label>
+                        <div class="col-sm-3">
+                            <select class="form-control" name="action">
+                                <option value="8">8 - Inquiry</option> 
+                                <option value="2">2 - Refund</option> 
+                                <option value="3">3 - Reversal</option> 
+                                <option value="12">12 - Token Deregistration</option> 
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="amount" class="col-sm-3 col-form-label">Amount</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" name="amount" value="0.100" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="transId" class="col-sm-3 col-form-label">Transaction ID</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" name="transId" value="" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="udf1" class="col-sm-3 col-form-label">Udf 1</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" name="udf1" value="user defined field 11111" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="udf2" class="col-sm-3 col-form-label">Udf 2</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" name="udf2" value="user defined field 2222" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="udf3" class="col-sm-3 col-form-label">Udf 3</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" name="udf3" value="user defined field 3333" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="udf4" class="col-sm-3 col-form-label">Udf 4</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" name="udf4" value="user defined field 4444" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="udf5" class="col-sm-3 col-form-label">Udf 5</label>
+                        <div class="col-sm-3">
+                            <select class="form-control" name="udf5">
+                                <option value="PaymentID">PaymentID</option> 
+                                <option value="TrackID">TrackID</option> 
+                                <option value="SeqNum">SeqNum</option>
+                                <option value="">Original Transaction Id</option>
+                                <option value="User Defined Field FIVE" selected="selected">User Defined Field FIVE</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="trackId" class="col-sm-3 col-form-label">Track Id</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" name="trackId" value="<%= token %>" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="submit" class="col-sm-3 col-form-label"></label>
+                        <div class="col-sm-4">
+                            <button type="button" onclick="fnClickServiceTransaction();" class="btn btn-default">Process</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
